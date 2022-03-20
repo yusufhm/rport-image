@@ -46,8 +46,7 @@ jobs:
           cosign-release: 'v1.4.0'
 
 
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         id: qemu
         uses: docker/setup-qemu-action@v1
         with:
