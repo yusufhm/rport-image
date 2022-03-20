@@ -1,0 +1,11 @@
+version: "3.1"
+
+services:
+  rport:
+    image: rport
+    command: [ "--auth", "yusuf:pass" ]
+    ports:
+      - 8080:8080
+      - 3000:3000
+    # volumes:
+    #   - ./rport-lib:/var/lib/rport

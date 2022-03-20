@@ -1,0 +1,11 @@
+[server]
+  address = "${SERVER_ADDRESS:-0.0.0.0:8080}"
+  url = "${SERVER_URL:-http://0.0.0.0:8080}"
+  key_seed = "${SERVER_KEY_SEED:-5448e69530b4b97fb510f96ff1550500b093}"
+  auth = "${SERVER_AUTH:-clientAuth1:1234}"
+  data_dir = "${SERVER_DATA_DIR:-/var/lib/rport}"
+
+[api]
+  address = "${API_ADDRESS:-0.0.0.0:3000}"
+  auth = "${API_AUTH:-admin:foobaz}"
+  doc_root = "${API_DOC_ROOT:-/var/www/html}"
