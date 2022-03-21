@@ -12,7 +12,7 @@ Currently builds images for
 
 ## Configuration via environment variables
 
-Configuration can always be provided by mounting a `/etc/rport/rportd.conf` file, or you can provide the following environment variables which will populate the file from [this template](/rportd.conf.template). See [rportd.example.config](https://github.com/cloudradar-monitoring/rport/blob/master/rportd.example.conf) for all available configuration.
+Configuration can always be provided by mounting a `/etc/rport/rportd.conf` file, or you can provide the following environment variables which will populate the file from [this template](/rportd.conf.template). See [rportd.example.conf](https://github.com/cloudradar-monitoring/rport/blob/master/rportd.example.conf) for all available configuration.
 
 | Variable | Default value | Description |
 | --- | --- | --- |
