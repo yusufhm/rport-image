@@ -1,11 +1,18 @@
 [server]
   address = "${SERVER_ADDRESS:-0.0.0.0:8080}"
   url = "${SERVER_URL:-http://0.0.0.0:8080}"
-  key_seed = "${SERVER_KEY_SEED:-5448e69530b4b97fb510f96ff1550500b093}"
-  auth = "${SERVER_AUTH:-clientAuth1:1234}"
+  key_seed = "${SERVER_KEY_SEED:-}"
+  auth = "${SERVER_AUTH:-}"
+  auth_file = "${SERVER_AUTH_FILE:-}"
   data_dir = "${SERVER_DATA_DIR:-/var/lib/rport}"
+  tunnel_proxy_cert_file = "${SERVER_TUNNEL_PROXY_CERT_FILE:-}"
+  tunnel_proxy_key_file = "${SERVER_TUNNEL_PROXY_KEY_FILE:-}"
+  novnc_root = "${SERVER_NOVNC_ROOT:-}"
 
 [api]
   address = "${API_ADDRESS:-0.0.0.0:3000}"
-  auth = "${API_AUTH:-admin:foobaz}"
+  auth = "${API_AUTH:-}"
   doc_root = "${API_DOC_ROOT:-/var/www/html}"
+
+[monitoring]
+  data_storage_days = ${MONITORING_DATA_STORAGE_DAYS:-}

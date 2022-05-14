@@ -43,7 +43,7 @@ RUN set -e \
 
 USER rport
 
-COPY --chown=rport:rport rportd.conf.template /etc/rport/rportd.conf.template
+COPY --chown=rport:rport rportd.conf.template /etc/rportd.conf.template
 
 VOLUME [ "/var/lib/rport/" ]
 
