@@ -1,15 +1,18 @@
-FROM alpine:3.15 as downloader
+FROM alpine:3 as downloader
 
-ARG RPORT_VERSION=0.6.0
-ARG FRONTEND_BUILD=0.6.0-build-966
-ARG NOVNC_VERSION=1.3.0
+ARG RPORT_VERSION=0.9.13
+ARG FRONTEND_BUILD=1.0.1-1-build-1151
+ARG NOVNC_VERSION=1.4.0
+ARG ENVPLATE_VERSION=1.0.3
 
 RUN apk add unzip
 
 WORKDIR /app/
 
-RUN set -e \
-    && wget https://github.com/cloudradar-monitoring/rport/releases/download/${RPORT_VERSION}/rportd_${RPORT_VERSION}_Linux_$(uname -m).tar.gz -O rportd.tar.gz \
+RUN set -ex \
+    && arch=$(uname -m) \
+    && if [ "${arch}" == "aarch64" ]; then release_arch="arm64"; else release_arch=${arch}; fi \
+    && wget https://github.com/openrport/openrport/releases/download/${RPORT_VERSION}/rportd_${RPORT_VERSION}_linux_${release_arch}.tar.gz -O rportd.tar.gz \
     && tar xzf rportd.tar.gz rportd
 
 RUN set -e \
@@ -24,8 +27,8 @@ WORKDIR /envplate
 RUN set -e \
     && arch=$(uname -m) \
     && if [ "${arch}" == "aarch64" ]; then release_arch="arm64"; else release_arch=${arch}; fi \
-    && release_name=envplate_1.0.2_$(uname -s)_${release_arch}.tar.gz \
-    && wget https://github.com/kreuzwerker/envplate/releases/download/v1.0.2/${release_name} -O envplate.tar.gz \
+    && release_name=envplate_${ENVPLATE_VERSION}_$(uname -s)_${release_arch}.tar.gz \
+    && wget https://github.com/kreuzwerker/envplate/releases/download/v${ENVPLATE_VERSION}/${release_name} -O envplate.tar.gz \
     && tar -xf envplate.tar.gz
 
 FROM debian:11
